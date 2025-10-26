@@ -89,7 +89,7 @@ const StudentCourseList = () => {
 
                                 {/* Button */}
                                 <button
-                                    onClick={() => Router.push(`/student/${course._id}`)}
+                                    onClick={() => Router.push(`/course/${course._id}`)}
                                     className="w-full mt-2 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-all"
                                 >
                                     View Details
@@ -104,4 +104,3 @@ const StudentCourseList = () => {
 };
 
 export default StudentCourseList;
-

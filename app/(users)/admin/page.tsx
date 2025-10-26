@@ -1,12 +1,12 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import { useGetAllUserQuery } from "@/src/redux/features/user/userApi";
 import { useGetAllCourseQuery } from "@/src/redux/features/course/courseApi";
 import { Loader2 } from "lucide-react";
 
 const AdminMain = () => {
-  const [role, setRole] = useState("teacher");
-  const { data, isLoading, isError } = useGetAllUserQuery({ users: role });
+  const [role, setRole] = useState("student");
+  const { data, isLoading, isError } = useGetAllUserQuery({ role: role });
   const { data: courseData, isLoading: courseLoading } =
     useGetAllCourseQuery(undefined);
 
@@ -67,6 +67,9 @@ const AdminMain = () => {
                   <th className="px-6 py-3 text-left font-semibold">
                     Enrolled Courses
                   </th>
+                  <th className="px-6 py-3 text-left font-semibold">
+                    Course Name
+                  </th>
                 </tr>
               </thead>
               <tbody>
@@ -87,6 +90,23 @@ const AdminMain = () => {
                         </span>
                       ) : (
                         <span className="text-gray-400 italic">No courses</span>
+                      )}
+                    </td>
+
+                    <td className="px-6 py-3">
+                      {user.enrolledCourses?.length > 0 ? (
+                        <div className="flex flex-wrap gap-2">
+                          {user.enrolledCourses.map((course: any, idx: number) => (
+                            <span
+                              key={course._id ?? idx}
+                              className="px-2 py-1 bg-blue-100 text-blue-700 rounded-full text-sm font-medium"
+                            >
+                              {course?.category || "N/A"}
+                            </span>
+                          ))}
+                        </div>
+                      ) : (
+                        <span className="text-gray-400 italic">No categories</span>
                       )}
                     </td>
                   </tr>

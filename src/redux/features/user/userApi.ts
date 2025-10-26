@@ -8,13 +8,15 @@ const userApi = baseApi.injectEndpoints({
         method: "POST",
         body: userInfo
       }),
+      invalidatesTags: ["User"], // mutation er sathe
     }),
-    //for admin route
+    // for admin route
     getAllUser: builder.query({
-      query: ({users}) => ({
-        url: `/users?role=${users}`,
+      query: ({ role }) => ({
+        url: `/users?role=${role}`,
         method: "GET",
       }),
+      providesTags: ["User"], // query er sathe
     }),
   })
 })

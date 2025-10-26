@@ -44,7 +44,7 @@ export default function Home() {
           //  Role-based redirect
         const role = res?.data?.role;
         if (role === "student") {
-          router.push("/student");
+          router.push("/course");
         } else if (role === "teacher") {
           router.push("/teacher");
         } else if (role === "admin") {
