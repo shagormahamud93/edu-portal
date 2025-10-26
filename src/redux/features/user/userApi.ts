@@ -11,8 +11,8 @@ const userApi = baseApi.injectEndpoints({
     }),
     //for admin route
     getAllUser: builder.query({
-      query: () => ({
-        url: "/users",
+      query: ({users}) => ({
+        url: `/users?role=${users}`,
         method: "GET",
       }),
     }),
